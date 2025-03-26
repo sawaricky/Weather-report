@@ -28,6 +28,9 @@ Watch Live Feature: Provides access to ABC Live News on YouTube for real-time up
 🚀 Technologies Used
 
 Backend: Node.js, Express.js
+
 Frontend: HTML, CSS, Bootstrap, Pug
+
 APIs: News API, Weather API
+
 Languages: JavaScript, CSS
