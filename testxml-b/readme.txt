@@ -1,0 +1,10 @@
+- Image place holder is in the header just to make it simple to show there is an advert there. However If companies wanted to advertise themselves they can do it on the page they like and that can be a selling point. As each page can be differently costed. 
+- Minimalistic approach with strong color to show the headlines and featured content 
+- Readmore takes it to the source of that page for both featured and api generated news. 
+- Featuered content is not from the api however for a future improvement this can display using an API that can show for example: most views 
+- Weather discription shows temperature and description as to the standards of current live news website. 
+- The drop downs uses 1 array where both the news and weather intergrate using the same array. The News api uses the country code, while the weather api uses city
+- It is responsive.
+- It is accessible using just the keyboard using tab key
+- Country remains in the drop down for the news and for the weather the country selected displays in the discriptive container
+- Watch live takes you to a ABC live news on youtube

@@ -1,0 +1,50 @@
+extends components/layout
+
+block layout-content
+  .container
+    .row
+      .col-md-8
+        //- Headlines container
+        section.introduction-container
+          article.Information
+            h1.text-center.text-color Welcome to the Latest Live News Headlines!
+            div.banner-image.text-center
+              //- advert place holder, this is just to show proof of how an actual news webpage works (often has adverts)
+              //- made using figma
+              img.mt-3.mb-3.img-fluid(src="/images/live-banner.jpg", alt="banner-image")
+            p.intro-descriptor
+              | Welcome to Live News Channel, your go-to source for the latest and most reliable news from around the world. Stay informed with our comprehensive coverage of breaking news and in-depth analysis, delivered directly to your screen.
+      //- drop down to select city
+      .col-md-4
+        .d-flex.justify-content-center.align-items-center.mt-3
+          .card-body
+            h2.card-title.text-center Select Your City
+            form(method="get", action="/")
+              .form-group
+                select.form-control(name="city", onchange="this.form.submit()")
+                  //- display options
+                  option(value="", selected disabled) Select a city
+                  //- loop through the array of countrycitypairs
+                  each pair in countryCityPairs
+                    option(value=pair.city) #{pair.country}, #{pair.city}
+              
+              if weather
+                .card.mt-4
+                  .card-header.temp-color
+                    //- display city and country of weather 
+                    div.weathertitle.card-title.my-0 Weather in #{weather.name}, #{weather.sys.country}
+                  .card-body
+                    //- temperature in that city
+                    p.card-text.font-weight-bold Temperature: #{weather.main.temp} °C
+                      //- jsut a nice way to show the colors depending on the weather forecast 
+                      if weather.main.temp  < 10
+                        p.card-text.cold Description: #{weather.weather[0].description}
+                      else if weather.main.temp < 25
+                        p.card-text.normal Description: #{weather.weather[0].description}
+                      if weather.main.temp> 25
+                        p.card-text.hot Description: #{weather.weather[0].description}
+              if error
+                //- for any errors related to the weather
+                .alert.alert-danger.mt-4
+                  strong Error: no input
+                  | #{error}

@@ -1,0 +1,125 @@
+body{
+  /*  add to form input and text area as well */
+  font-family: Arial, Helvetica, sans-serif;
+  /* typical desktop default font size is 16px so 1em = 16px * 1=16px*/
+  font-size: 1em; 
+  /* height betwween each line in the paragraph */
+  line-height: 1.25;
+}
+  /* logo information  */
+.logo{
+    width: 70px;
+    height: auto;
+}
+
+/* introduction container  */
+.introduction-container {
+    max-width: 1300px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* weather title  */
+.weathertitle {
+  font-size: 20px;
+}
+.article-title{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.intro-img {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+  }
+.fullcontainer{
+  width: 1300px;
+}
+.text-color{
+  color: #002077;
+}
+.btn{
+  background-color: #002077;
+}
+/* .read-more-button{
+  background-color: #ff6a00cd;
+  color: #f9f9f9;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.read-more-button:hover{
+  background-color: #ff6a0025;
+  color: #002077;
+  border: solid 5px #002077;
+  text-decoration: none;
+  font-weight: bold;
+
+} */
+.navigation{
+  padding: 0 35px 0 35px;
+}
+.temp-color{
+  background-color: #002077;
+  color: #fff;
+}
+/* weather description */
+.cold{
+  color: #002077;
+}
+.hot{
+  color: #cf0000;
+}
+.normal{
+  color: #00771e;
+}
+
+.ad-image{
+  max-width: 1140px;
+  width: 100%;
+  height: 100px;
+}
+.introduction-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #cf0000;;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+footer {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-top: 40px;}
+
+@media screen and (max-width: 948px) {
+    .introduction-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .intro-descriptor,
+    .banner-image {
+        flex: 0 0 100%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .intro-descriptor,
+    .banner-image {
+      flex: 0 0 100%;
+    }
+  }

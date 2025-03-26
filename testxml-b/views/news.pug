@@ -1,0 +1,74 @@
+extends components/layout
+
+block layout-content
+  title= title
+  body
+    .container.mt-5
+      .row
+        .col-md-3.leftside
+          //- static articles section to show a subsection of featured news
+          h1.text-danger.font-weight-bold.text-center Featured News
+          article.card.mb-6
+            .card-header
+              p.my-4.text-color.font-weight-bold Bitcoin Latest 
+            .card-body.mb-2
+              p.card-text Bitcoin's value fluctuates as market reacts to regulatory news and economic trends. Stay updated with the latest developments.
+              //- https://c8.alamy.com/comp/KWD3AT/golden-coin-with-bitcoin-symbol-isolated-on-white-background-3d-rendering-KWD3AT.jpg
+              img(src="/images/bitcoin.jpg", alt="bitcoin Image", class="img-fluid")
+              //- link to the news
+              a(href="https://news.bitcoin.com/", class="btn btn-primary mt-3") Read More
+              
+            .card-header
+              p.my-4.text-color.font-weight-bold Apple Latest
+            .card-body.mb-2
+              p.card-text Apple unveils new products and updates, impacting tech industry trends and market performance. Get the latest updates here.
+              //- https://scx1.b-cdn.net/csz/news/800a/2024/apple-is-making-big-ap.jpg              
+              img(src="/images/apple.jpg", alt="apple Image", class="img-fluid")
+              //- link to the news 
+              a(href="https://www.apple.com/apple-news/", class="btn btn-primary mt-3") Read More           
+
+            .card-header
+              p.my-4.text-color.font-weight-bold Tesla Latest
+            .card-body.mb-2
+              p.card-text Tesla's latest innovations and market moves are shaping the future of electric vehicles and sustainable energy.
+              //- https://www.logoai.com/uploads/articles/2024/03/05/17096195246566834.jpg
+              img(src="/images/tesla.jpg", alt="tesla image", class="img-fluid")
+              //- link to the news
+              a(href="https://www.teslarati.com/", class="btn btn-primary mt-3") Read More
+
+        .col-md-9
+          //- Dynamic news API articles section
+          h2.text-color Ricky's News Production
+          p.my-4.text-color Stay informed with the most eye catching headlines from across the world. Discover the latest news, trends, and events that matter most. Don't miss out on the stories shaping our world read latest updates.
+          form(method="get", action="/news")
+            //- select country from the code provided in the countrycitypairs
+            .form-group 
+              label(for="country") Select Country: 
+              select.form-control(name="country", id="country")
+                each pair in countryCityPairs
+                  option(value=pair.code selected=(selectedCountry === pair.code)) #{pair.country}
+              button.btn.btn-primary.mt-3(type="submit") Get News
+          
+          if news && news.length > 0
+            each article in news
+              //- split the string at T to show the published content before
+              - const [date, time] = article.publishedAt.split('T');
+              //- split for article title in the headline string 
+              - const titleParts = article.title.split(' - ');
+              - const title = titleParts[0];
+              //- if exists display otherwise unknown 
+              - const author = 'Publisher: ' + (titleParts[1] ? titleParts[1] : 'Unknown');
+              .card.mb-4
+                .card-header
+                  //- display content in the card
+                  div.article-title.my-4.text-danger= title
+                  p.my-4= description
+                  .d-flex.justify-content-end.mt-3
+                    a(href=article.url, class="btn btn-primary mt-1") Read More
+                .card-body.mb-2
+                  //- show author, date and time only the first 8th characters 
+                  p.card-text= `${author} -- Published At: ${date} ${time.slice(0, 8)} UTC`
+
+          else
+            //- otherwise no available articles. 
+            p No news articles available.
